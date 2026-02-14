@@ -1,0 +1,305 @@
+    html {
+        scroll-behavior: smooth;
+    }
+
+    /* RESET */
+    body {
+        padding: 0;
+        margin: 0;
+        overflow-x: hidden;
+        font-family: 'dreaming-outland', sans-serif;
+    }
+
+    /* FONT */
+    @font-face {
+        font-family: 'dreaming-outland';
+        src: url('./fonts/dreaming-outloud-pro-regular.otf');
+    }
+
+    /* Shooting stars */
+    .shooting-stars {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: 10; 
+        pointer-events: none;
+    }
+
+    .shooting-stars .star {
+        position: absolute;
+        top: calc(var(--i) * 50px);   
+        left: 0; 
+        width: 2px;
+        height: 80px;
+        background: linear-gradient(-45deg, rgb(255, 255, 255), transparent); 
+        opacity: 0;
+        transform: rotate(-45deg); 
+        animation: shooting 4s linear infinite; 
+        animation-delay: calc(var(--i) * 1s);   
+    }
+
+    @keyframes shooting {
+        0% {
+            transform: translate(0, 0) rotate(-45deg);
+            opacity: 0;
+        }
+        10% {
+            opacity: 1;
+        }
+        100% {
+            transform: translate(120vw, 120vh) rotate(-45deg); 
+            opacity: 0;
+        }
+    }
+
+    /* FIRST CONTAINER */
+    .first_container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100vh;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-image: url('dark_sky.jpg');
+        position: relative;
+    }
+
+    /* HEADING */
+    .first_container > h1 {
+        text-align: center;
+        font-size: 5em;
+        margin: 0;
+        color: #fff;
+        line-height: 1.2;
+    }
+
+    .button_wrapper {
+        position: relative;
+        top: 25%;
+    }
+
+    /* BUTTONS - ALL */
+    .button {
+        width: 150px;
+        border-radius: 10px;
+        background-color: #58719F;
+        color: #fff;
+        font-size: 1.2em;
+        text-align: center;
+        padding: 10px 10px;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in, color 0.3s ease-in, transform 0.4s ease-in;
+        font-family: 'dreaming-outland', sans-serif;
+        z-index: 1000;
+    }
+
+    .button:hover,
+    .contents > #fourth_button:hover {
+        background-color: #B8EBF1;
+        color: #2D2953;
+        transform: scale(1.2);
+    }
+
+    /* SECOND CONTAINER */
+    .second_container {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-image: url('night_sky.jpg');
+    }
+
+    .second_page {
+        display: flex;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 20px; 
+    }
+
+    /* Card container */
+    .card_container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;      
+        padding: 30px 50px; 
+        overflow: visible;
+        perspective: 1000px;
+    }
+
+    /* Card */
+    .card {
+        display: flex;
+        flex-direction: column;
+        width: 350px;
+        height: 350px;
+        border-radius: 20px;
+        border: 2px solid #141f37;
+        background-color: #598dfd;
+        overflow: hidden;
+        transform-style: preserve-3d;
+        animation: standing_float 3s ease-in-out infinite;
+    }
+
+    @keyframes standing_float {
+        0% {
+            transform: rotateY(0deg) translateY(0px);
+        }
+        25% {
+            transform: rotateY(5deg) translateY(-5px);
+        }
+        50% {
+            transform: rotateY(-5deg) translateY(-10px);
+        }
+        75% {
+            transform: rotateY(5deg) translateY(-5px);
+        }
+        100% {
+            transform: rotateY(0deg) translateY(0px);
+        }
+    }
+
+    .image_holder {
+        flex: 1;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .image_holder img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .message_holder {
+        background-color: #ffffff;
+        padding: 10px;
+        color: white;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .description_h2 {
+        margin: 0;
+        padding: 0;
+        color: #141f37;
+    }
+    .third_container {
+    padding: 40px 20px;
+    position: relative;     
+    width: 100%;
+    min-height: 100vh;   /* changed from height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: auto;  
+}
+
+/* Blurred background layer */
+.third_container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('night_dark_blue.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: blur(8px);     
+    transform: scale(1.1);   
+    z-index: 0;              
+    pointer-events: none;   
+}
+
+.contents {
+    margin: 0;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+}
+
+.contents h1 {
+    background-color: #ffffffb8;
+    color: #04182d;
+    padding: 10px;
+    line-height: 1.6;
+    text-align: left;      /* better than justify */
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    border-radius: 10px;
+}
+
+    .message {
+        font-size: 25px;
+        padding: 10px;
+    }
+    .contents button {
+        position: relative;
+        top: 5px;
+    }
+
+    /* TABLET - ≤1000px */
+    @media (max-width: 1000px) {
+        .first_container > h1 {
+            font-size: 3.5em;
+            margin-top: 30px;
+        }
+    }
+
+    /* MOBILE - ≤600px */
+    @media (max-width: 600px) {
+        body {
+            overflow-y: scroll;
+        }
+
+        .first_container {
+            display: flex;
+            width: 100%;
+            height: 100vh;
+        }
+
+        .first_container > h1 {
+            font-size: 3em;
+            margin: 0;
+        }
+
+        .second_container {
+            width: 100%;
+        }
+
+        .second_page {
+            gap: 15px; 
+        }
+    }
+
+    /* RESPONSIVE CARDS */
+    @media (max-width: 800px) {
+        .cards-container {
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .card {
+            max-width: 100%;
+        }
+    }
